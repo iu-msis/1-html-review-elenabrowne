@@ -7,7 +7,6 @@ header{
     background-color: black;
     color: white;
     font-size: 15pt;
-    link: blue;
     }
 
 footer {
@@ -17,8 +16,8 @@ footer {
         font-family: "Helvetica";
         padding-bottom: .5px;
         font-size: 8pt;
-        link: blue;
 }
 
-
+.navbar li.nav-item {
+    padding: 0 10px;
 }
