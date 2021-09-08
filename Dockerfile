@@ -6,4 +6,4 @@ LABEL maintainer="Tom Gregory"
 WORKDIR /var/www/html
 
 #Copy our public folder to the working directory
-COPY public .
+COPY app/public .
