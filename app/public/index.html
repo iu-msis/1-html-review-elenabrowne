@@ -60,7 +60,7 @@ She was a member of Alpha Gamma Delta sorority and Delta Sigma Pi business frate
     </div>
     <div id="offerApp" class="col col-8">
       <h1>Two of two columns</h1>
-      <form v-on:submit="fetchUserData">
+      <form v-on:submit.prevent="fetchUserData">
         <button type="submit"> Refresh</button>
       </form>
       <li></li><strong> Full Name:</strong><p>{{ person.name.first }} {{ person.name.last }}</p></li>
