@@ -5,7 +5,7 @@ const Offer = {
         "offers": [
                 {
                     "id": 1,
-                    "name": "Janet Doe",
+                    "name": "Jane Doe",
                     "salary": 120000,
                     "bonus": 9000,
                     "company":"EY",
@@ -27,9 +27,9 @@ const Offer = {
             return dayjs(this.person.dob.date)
             .format ('D MMMYYYY')
         }
-    }
-
-    created() {
+    },
+    methods: {
+      fetchUserData(){
         console.log("A");
         fetch('https://randomuser.me/api/')
         .then( response => response.json() )
@@ -42,6 +42,16 @@ const Offer = {
             console.error(err);
         })
         console.log("B");
+    } //end created
+} // end Offer config
+  
+Vue.createApp(Offer).mount('#offerApp');
+console.log("Z");
+      }  
+    },
+
+    created() {
+        this.fetchUserData();
     } //end created
 } // end Offer config
   
