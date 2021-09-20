@@ -25,7 +25,7 @@ const Offer = {
     computed: {
         prettyBirthday(){
             return dayjs(this.person.dob.date)
-            .format ('DD/MM/YYYY')
+            .format ('D MMMYYYY')
         }
     }
 
