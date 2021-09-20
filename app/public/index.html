@@ -63,8 +63,9 @@ She was a member of Alpha Gamma Delta sorority and Delta Sigma Pi business frate
       <form v-on:submit="fetchUserData">
         <button type="submit"> Refresh</button>
       </form>
-      <p>{{ person.name.first }} {{ person.name.last }}</p>
-      <p>{{prettyBirthday}}</p>
+      <li></li><strong> Full Name:</strong><p>{{ person.name.first }} {{ person.name.last }}</p></li>
+      <li><strong> Country of Origin:</strong><p>{{ person.location.country}}}</p></li>
+      <li><strong>Birthday:</strong><p>{{prettyBirthday}}</p></li>
       <p><a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p>
 
       
