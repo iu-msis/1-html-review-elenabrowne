@@ -56,24 +56,20 @@ She was a member of Alpha Gamma Delta sorority and Delta Sigma Pi business frate
 <div class="container">
   <div class="row align-items-start">
     <div class="col col-4">
-      One of two columns
+     
     </div>
     <div id="offerApp" class="col col-8">
-      <h1>Two of two columns</h1>
+      
       <form v-on:submit.prevent="fetchUserData">
         <button type="submit"> Refresh</button>
       </form>
-      <li></li><strong> Full Name:</strong><p>{{ person.name.first }} {{ person.name.last }}</p></li>
-      <li><strong> Country of Origin:</strong><p>{{ person.location.country}}}</p></li>
+      <li><strong> Full Name:</strong><p>{{ person.name.first }} {{ person.name.last }}</p></li>
+      <li><strong> Country of Origin:</strong><p>{{ person.location.country}}</p></li>
       <li><strong>Birthday:</strong><p>{{prettyBirthday}}</p></li>
-      <p><a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p>
+      <li><strong>Email Address:</strong><p><a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p></li>
 
       
-      <ul v-for="row in offers">
-        <li>{{ row.name }} - {{row.salary}}</li>
-      </ul>
-    </div>
-  </p>
+     
   </div>
 
 
