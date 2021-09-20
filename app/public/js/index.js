@@ -42,13 +42,9 @@ const Offer = {
             console.error(err);
         })
         console.log("B");
-    } //end created
-} // end Offer config
+    } 
+}, 
   
-Vue.createApp(Offer).mount('#offerApp');
-console.log("Z");
-      }  
-    },
 
     created() {
         this.fetchUserData();
