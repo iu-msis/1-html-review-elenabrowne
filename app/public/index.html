@@ -62,6 +62,7 @@ She was a member of Alpha Gamma Delta sorority and Delta Sigma Pi business frate
         <button type="submit"> Refresh</button>
       </form>
       <p>{{ person.name.first }} {{ person.name.last }}</p>
+      <p>{{prettyBirthday}}</p>
       <p><a v-bind:href="'mailto:'+person.email">{{ person.email }}</a></p>
       <p>{{ person }}</p>
       
