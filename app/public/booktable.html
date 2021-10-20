@@ -8,6 +8,8 @@
      <link href="css/style.css" rel="stylesheet" type="text/css" />
  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://unpkg.com/vue@next"></script>
+
          
 </head>
 <body>
@@ -37,125 +39,88 @@
     </main>
  
 <main>
-<p> 
-  <table class="table sortable-theme-dark" data-sortable>
-     <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Author</th>
-      <th scope="col">Year Published</th>
-      <th scope="col">Publisher</th>
-      <th scope="col"> Page Count</th>
-      <th scope="col">MSRP</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Game of Thrones</th>
-      <td>George R. R. Martin</td>
-      <td>1996</td>
-      <td>Harper Collins</td>
-      <td>694</td>
-      <td>$15.99</td>
-    </tr>
-    <tr>
-      <th scope="row">A Dance With Dragons</th>
-      <td>George R. R. Martin</td>
-      <td>2011</td>
-      <td>Harper Collins</td>
-      <td>1016</td>
-      <td>$16.99</td>
-    </tr>
-    <tr>
-      <th scope="row">Storm and Swords: A Song of Ice and Fire </th>
-      <td>George R. R. Martin</td>
-      <td>2000</td>
-      <td>Harper Collins</td>
-      <td>973</td>
-      <td>$17.99</td>
-    </tr>
-    <tr>
-      <th scope="row">A Clash of Kings</th>
-      <td>George R. R. Martin</td>
-      <td>1998</td>
-      <td>Harper Collins</td>
-      <td>761</td>
-      <td>$15.99</td>
-    </tr>
+  <div id="booktableApp" class="container">
+    <div class="row align-items-start">
+      <div class="col col-4">
+  
+    </div>
+
+  <div  class="col col-8">
+    <h1>List of Books</h1>
     
+    <table class="table">
+      <thead>
+     <tr>
+       
+       <th>Title</th>
+       <th>Author Name</th>
+       <th>Publisher</th>
+       <th>Year Published</th>
+       <th> Page Count</th>
+       <th> MSRP</th>
+      
+     </tr>
+     </thead>
+
+     <tbody>
+      <tr v-for="book in booktable">
+          <td>{{ book.title }}</td>
+          <td>{{ book.authorname }}</td>
+          <td>{{ book.publisher }}</td>
+          <td>{{ book.yearpublished }}</td>
+          <td>{{ book.pages }}</td>
+          <td>{{ book.MRP }}</td>
+          <td>
+            <button type="button" v-on:click="handleEditOffer(offer)" class="btn btn-outline-secondary btn-sm">Edit</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm">Delete</button>
+          </td>
+      </tr>
   </tbody>
 </table>
 
-</p>
-</main>
-<a href="https://www.amazon.com/Game-Thrones-Illustrated-Song-Fire/dp/0553808044/ref=asc_df_0553808044/?tag=hyprod-20&linkCode=df0&hvadid=312057607832&hvpos=&hvnetw=g&hvrand=15350795372720653562&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-462866635564&psc=1
-<p>">
-<img src="img/G.jpg" alt="GoT" width =200</img>
-</a>
-<a href="https://www.amazon.com/Clash-Kings-Song-Fire-Book/dp/0553108034/ref=asc_df_0553108034/?tag=hyprod-20&linkCode=df0&hvadid=312114918153&hvpos=&hvnetw=g&hvrand=16065949171870554&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-433365378920&psc=1&tag=&ref=&adgrpid=58874700661&hvpone=&hvptwo=&hvadid=312114918153&hvpos=&hvnetw=g&hvrand=16065949171870554&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-433365378920
-">
-<img src="img/Kings.jpg" alt="Kings" width =200</img>
-</a>
-<main><header> <strong>
-  <p>Reccommend a Book:</strong> </header></p>
-  </main>
-<form>
-  <div class="form-group">
-    
-   <label for="author">Enter Book Title</label>
-    <input type="author" class="form-control" id="author" aria-describedby="author" placeholder="Enter author">
-    <small id="author" class="form-text text-muted">Please enter the name of author .</small>
-  </div>
-  </div>
-   <label for="yearpublished">Enter Year Published</label>
-    <input type="yearpublished" class="form-control" id="yearpublished" aria-describedby="yearpublished" placeholder="Enter year published">
-    <small id="yearpublished" class="form-text text-muted">Please enter the publishing year .</small>
-  </div>
-  </div>
-  <div>
-  
-   <label for="publisher">Enter Publisher</label>
-   </div>
-    <input type="publisher" class="form-control" id="publisher" aria-describedby="publisher" placeholder="Enter publisher">
-    <small id="publisher" class="form-text text-muted">Please enter the publisher .</small>
-  </div>
+<form v-on:submit.prevent="postNewOffer">
+  <h2>Add a  Book</h2>
+
+<div class="mb-3">
+  <label for="title" class="form-label">Title</label>
+  <input type="text" v-model="bookForm.companyName" class="form-control" id="companyName">
 </div>
-  <div>
-  </div>
-   <label for="page count">Enter Page Count</label>
-    <input type="page count" class="form-control" id="page count" aria-describedby="page count" placeholder="Enter page count">
-    <small id="page count" class="form-text text-muted">Please enter the page count .</small>
-  </div>
-  </div>
-  </div>
-  <div>
-   <label for="author">Enter Price</label>
-    <input type="price" class="form-control" id="price" aria-describedby="price" placeholder="Enter price of the book">
-    <small id="price" class="form-text text-muted">Please enter the price of the book .</small>
-  </div>
-  <div>
-  <div class="form-group form-check">
-   
-  <button type="submit" class="btn btn-primary">Submit</button>
+<div class="mb-3">
+  <label for="authorname" class="form-label">Authorname</label>
+  <input type="text" v-model="bookForm.companyName"class="form-control" id="companyName">
+</div>
+<div class="mb-3">
+  <label for="yearpublished" class="form-label">Year Published</label>
+  <input type="number" v-model="bookForm.bonus" class="form-control" id="bonus">
+</div>
+<div class="mb-3">
+  <label for="publisher" class="form-label">Publisher</label>
+  <input type="text" v-model="bookForm.companyName"class="form-control" id="companyName">
+</div>
+<div class="mb-3">
+  <label for="pages" class="form-label">Number of Pages</label>
+  <input type="number" v-model="bookForm.bonus" class="form-control" id="bonus">
+</div>
+<div class="mb-3">
+  <label for="MRP" class="form-label">MSRP</label>
+  <input type="number" v-model="bookForm.bonus" class="form-control" id="bonus">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-outline-secondary" 
+v-if="selectedBook"
+v-on:click="handleResetEdit">Cancel Edit</button>
 </form>
-</body>
-<footer>
-<cite> 
-<p>
-<div>
-
-<strong>Citations</strong>
-<div>
-"Game of Thrones."<a href="https://www.amazon.com/Game-Thrones-Illustrated-Song-Fire/dp/0553808044/ref=asc_df_0553808044/?tag=hyprod-20&linkCode=df0&hvadid=312057607832&hvpos=&hvnetw=g&hvrand=15350795372720653562&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-462866635564&psc=1"> "https://www.amazon.com/Game-Thrones-Illustrated-Song-Fire/dp/0553808044/ref=asc_df_0553808044/?tag=hyprod-20&linkCode=df0&hvadid=312057607832&hvpos=&hvnetw=g&hvrand=15350795372720653562&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-462866635564&psc=1"</a>
-<p>
-<div>
-"A Clash of Kings."<a href="https://www.amazon.com/Clash-Kings-Song-Fire-Book/dp/0553108034/ref=asc_df_0553108034/?tag=hyprod-20&linkCode=df0&hvadid=312114918153&hvpos=&hvnetw=g&hvrand=16065949171870554&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-433365378920&psc=1&tag=&ref=&adgrpid=58874700661&hvpone=&hvptwo=&hvadid=312114918153&hvpos=&hvnetw=g&hvrand=16065949171870554&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-433365378920">"https://www.amazon.com/Clash-Kings-Song-Fire-Book/dp/0553108034/ref=asc_df_0553108034/?tag=hyprod-20&linkCode=df0&hvadid=312114918153&hvpos=&hvnetw=g&hvrand=16065949171870554&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-433365378920&psc=1&tag=&ref=&adgrpid=58874700661&hvpone=&hvptwo=&hvadid=312114918153&hvpos=&hvnetw=g&hvrand=16065949171870554&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9016565&hvtargid=pla-433365378920" </a>
-
-
 
 </div>
-</cite>
+
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+
 </footer>
 <script src="js/sortable.min.js"></script>
+<script src="js/booktable.js"></script>
 </html>
