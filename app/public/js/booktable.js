@@ -2,6 +2,7 @@ const booktable = {
     data() {
       return {
         booktable: [],
+        offers: [],
         bookForm:{},
         selectedBook: null
       }
@@ -52,13 +53,13 @@ postOffer(evt) {
             });
         },
         postNewOffer(evt) {
-          this.offerForm.studentId = this.selectedStudent.id;        
+          //this.offerForm.studentId = this.selectedStudent.id;        
           
-          console.log("Creating!", this.offerForm);
+          console.log("Creating!", this.bookForm);
   
-          fetch('api/offer/create.php', {
+          fetch('api/booktable/create.php', {
               method:'POST',
-              body: JSON.stringify(this.offerForm),
+              body: JSON.stringify(this.bookForm),
               headers: {
                 "Content-Type": "application/json; charset=utf-8"
               }
